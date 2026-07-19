@@ -1,5 +1,7 @@
+import { FavoritesWidget } from '~widgets/favorites/ui/FavoritesWidget';
+
 const FavoritesPage = () => {
-  return <>j</>;
+  return <FavoritesWidget />;
 };
 
 export default FavoritesPage;

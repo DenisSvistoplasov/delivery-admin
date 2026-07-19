@@ -1,5 +1,5 @@
 import { createApp } from '@tramvai/core';
-import { CommonModule } from '@tramvai/module-common';
+import { COMBINE_REDUCERS, CommonModule } from '@tramvai/module-common';
 import { SpaRouterModule } from '@tramvai/module-router';
 import { RenderModule } from '@tramvai/module-render';
 import { ServerModule } from '@tramvai/module-server';
@@ -17,6 +17,7 @@ import { Layout } from '~widgets/layout/ui/Layout';
 import { ReactQueryModule } from '@tramvai/module-react-query';
 import { MENU_API_TOKEN, ORDER_API_TOKEN } from '~shared/lib/tokens';
 import { MenuApiService } from '~entities/menu/api/api';
+import { FavoriteDishesStore } from '~entities/dish/model/store';
 
 createApp({
   name: 'delivery-admin',
@@ -52,6 +53,10 @@ createApp({
     {
       provide: DEFAULT_LAYOUT_COMPONENT,
       useValue: Layout,
+    },
+    {
+      provide: COMBINE_REDUCERS,
+      useValue: FavoriteDishesStore,
     },
   ],
 });

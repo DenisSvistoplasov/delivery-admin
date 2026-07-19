@@ -1,25 +1,13 @@
-import { useQuery } from '@tramvai/react-query';
+import { useStore } from '@tramvai/state';
+import { FavoriteDishesStore } from '~entities/dish/model/store';
 import { DishItem } from '~entities/dish/ui/DishItem';
-import { getMenuQuery } from '~entities/menu/model/queries';
 
-export const MenuWidget = () => {
-  const { data: menu, isError, isLoading } = useQuery(getMenuQuery);
-
-  if (isLoading) {
-    return <p>Загрузка меню...</p>;
-  }
-
-  if (isError) {
-    return (
-      <p role="alert">
-        Не удалось загрузить меню. Попробуйте обновить страницу.
-      </p>
-    );
-  }
+export const FavoritesWidget = () => {
+  const favoriteDishes = useStore(FavoriteDishesStore);
 
   return (
     <div>
-      <h1>Меню ресторана</h1>
+      <h1>Избранные блюда</h1>
 
       <table
         border={1}
@@ -41,8 +29,8 @@ export const MenuWidget = () => {
           </tr>
         </thead>
         <tbody>
-          {menu?.length ? (
-            menu.map((item) => <DishItem {...item} key={item.id} />)
+          {favoriteDishes.length ? (
+            favoriteDishes.map((item) => <DishItem {...item} key={item.id} />)
           ) : (
             <tr style={{ textAlign: 'center' }}>
               <td colSpan={6}>Нет избранных блюд</td>

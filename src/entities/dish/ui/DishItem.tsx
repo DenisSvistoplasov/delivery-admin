@@ -1,3 +1,4 @@
+import { ToggleFavoriteButton } from '~features/toggle-favorite/ui/ToggleFavoriteButton';
 import type { Dish } from '../model/types';
 
 export const DishItem = ({ id, image, inStock, price, title }: Dish) => {
@@ -18,6 +19,9 @@ export const DishItem = ({ id, image, inStock, price, title }: Dish) => {
         />
       </td>
       <td>{inStock ? 'Да' : 'Нет'}</td>
+      <td>
+        <ToggleFavoriteButton dish={{ id, title, price, image, inStock }} />
+      </td>
     </tr>
   );
 };
