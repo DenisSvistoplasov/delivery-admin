@@ -1,6 +1,6 @@
-import { useQuery } from '@tramvai/react-query';
+import { useMutation, useQuery } from '@tramvai/react-query';
 import { useState } from 'react';
-import { getMenuQuery } from '~entities/menu/model/queries';
+import { getMenuQuery, updateDishMutation } from '~entities/menu/model/queries';
 import { DishItem } from '~entities/dish/ui/DishItem';
 
 export const MenuWidget = () => {
